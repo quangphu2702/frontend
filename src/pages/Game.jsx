@@ -9,6 +9,9 @@ const Game = () => {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [buyingTurns, setBuyingTurns] = useState(false);
+  const [showPasswordForm, setShowPasswordForm] = useState(false);
+  const [password, setPassword] = useState('');
+  const [paymentMessage, setPaymentMessage] = useState('');
 
   useEffect(() => {
     fetchUserInfo();
@@ -35,16 +38,31 @@ const Game = () => {
     }
   };
 
-  const handleBuyTurns = async () => {
+  const handleBuyTurns = async (e) => {
+    e?.preventDefault();
     if (buyingTurns) return;
 
+    if (!showPasswordForm) {
+      setShowPasswordForm(true);
+      setPaymentMessage('');
+      return;
+    }
+
+    if (!password) {
+      setPaymentMessage('Vui lòng nhập mật khẩu');
+      return;
+    }
+
     setBuyingTurns(true);
+    setPaymentMessage('');
     try {
-      await gameAPI.buyTurns();
+      const response = await gameAPI.buyTurns(password);
+      setPaymentMessage(response.data.message);
+      setPassword('');
+      setShowPasswordForm(false);
       await fetchUserInfo();
-      alert('Mua lượt chơi thành công!');
     } catch (error) {
-      alert(error.response?.data?.message || 'Có lỗi xảy ra');
+      setPaymentMessage(error.response?.data?.message || 'Thanh toán không thành công');
     } finally {
       setBuyingTurns(false);
     }
@@ -72,9 +90,45 @@ const Game = () => {
         {user.turns <= 0 ? (
           <div className="no-turns">
             <p>Bạn đã hết lượt chơi!</p>
-            <button onClick={handleBuyTurns} className="buy-button" disabled={buyingTurns}>
-              {buyingTurns ? 'Đang xử lý...' : 'Mua 5 Lượt Chơi'}
-            </button>
+            {showPasswordForm ? (
+              <form onSubmit={handleBuyTurns} className="password-form">
+                <div className="form-group">
+                  <label>Nhập mật khẩu để mua lượt:</label>
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Nhập mật khẩu"
+                    required
+                  />
+                </div>
+                {paymentMessage && (
+                  <div className={`payment-message ${paymentMessage.includes('thành công') ? 'success' : 'error'}`}>
+                    {paymentMessage}
+                  </div>
+                )}
+                <div className="form-actions">
+                  <button type="submit" className="buy-button" disabled={buyingTurns}>
+                    {buyingTurns ? 'Đang xử lý...' : 'Xác Nhận'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowPasswordForm(false);
+                      setPassword('');
+                      setPaymentMessage('');
+                    }}
+                    className="cancel-button"
+                  >
+                    Hủy
+                  </button>
+                </div>
+              </form>
+            ) : (
+              <button onClick={handleBuyTurns} className="buy-button">
+                Mua 5 Lượt Chơi
+              </button>
+            )}
           </div>
         ) : (
           <>
@@ -111,9 +165,45 @@ const Game = () => {
               </div>
             )}
 
-            <button onClick={handleBuyTurns} className="buy-button" disabled={buyingTurns}>
-              {buyingTurns ? 'Đang xử lý...' : 'Mua Thêm 5 Lượt'}
-            </button>
+            {showPasswordForm ? (
+              <form onSubmit={handleBuyTurns} className="password-form">
+                <div className="form-group">
+                  <label>Nhập mật khẩu để mua lượt:</label>
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Nhập mật khẩu"
+                    required
+                  />
+                </div>
+                {paymentMessage && (
+                  <div className={`payment-message ${paymentMessage.includes('thành công') ? 'success' : 'error'}`}>
+                    {paymentMessage}
+                  </div>
+                )}
+                <div className="form-actions">
+                  <button type="submit" className="buy-button" disabled={buyingTurns}>
+                    {buyingTurns ? 'Đang xử lý...' : 'Xác Nhận'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowPasswordForm(false);
+                      setPassword('');
+                      setPaymentMessage('');
+                    }}
+                    className="cancel-button"
+                  >
+                    Hủy
+                  </button>
+                </div>
+              </form>
+            ) : (
+              <button onClick={handleBuyTurns} className="buy-button" disabled={buyingTurns}>
+                Mua Thêm 5 Lượt
+              </button>
+            )}
           </>
         )}
       </div>

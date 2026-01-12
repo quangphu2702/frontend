@@ -44,7 +44,7 @@
 
 .home-button.primary {
   background: white;
-  color: #667eea;
+  color: #ff6b35;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -90,7 +90,7 @@
 }
 
 .feature h3 {
-  color: #667eea;
+  color: #ff6b35;
   margin-bottom: 0.5rem;
   font-size: 1.3rem;
 }

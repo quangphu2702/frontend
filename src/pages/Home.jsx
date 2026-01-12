@@ -16,9 +16,6 @@ const Home = () => {
             <Link to="/game" className="home-button primary">
               Bắt Đầu Chơi
             </Link>
-            <Link to="/leaderboard" className="home-button secondary">
-              Xem Bảng Xếp Hạng
-            </Link>
           </div>
         ) : (
           <div className="home-actions">
@@ -37,14 +34,14 @@ const Home = () => {
             <p>Đoán số từ 1 đến 5 và giành điểm</p>
           </div>
           <div className="feature">
-            <div className="feature-icon">🏆</div>
-            <h3>Bảng Xếp Hạng</h3>
-            <p>Xem top 10 người chơi xuất sắc nhất</p>
-          </div>
-          <div className="feature">
             <div className="feature-icon">⚡</div>
             <h3>Nhanh Chóng</h3>
             <p>Chơi ngay, không cần cài đặt phức tạp</p>
+          </div>
+          <div className="feature">
+            <div className="feature-icon">🎮</div>
+            <h3>Vui Vẻ</h3>
+            <p>Trải nghiệm game thú vị và hấp dẫn</p>
           </div>
         </div>
       </div>

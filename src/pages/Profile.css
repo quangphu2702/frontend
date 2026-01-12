@@ -17,7 +17,7 @@
 
 .profile-card h1 {
   text-align: center;
-  color: #667eea;
+  color: #ff6b35;
   margin-bottom: 2rem;
   font-size: 2rem;
 }
@@ -33,7 +33,7 @@
   margin-bottom: 1rem;
   background: #f8f9fa;
   border-radius: 8px;
-  border-left: 4px solid #667eea;
+  border-left: 4px solid #ff6b35;
 }
 
 .info-label {
@@ -54,7 +54,7 @@
 }
 
 .stat-card {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #4ecdc4;
   padding: 2rem;
   border-radius: 10px;
   text-align: center;

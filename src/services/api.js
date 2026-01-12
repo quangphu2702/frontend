@@ -39,7 +39,7 @@ export const authAPI = {
 
 export const gameAPI = {
   guess: (number) => api.post('/api/game/guess', { number }),
-  buyTurns: () => api.post('/api/game/buy-turns'),
+  buyTurns: (password) => api.post('/api/game/buy-turns', { password }),
 };
 
 export const userAPI = {

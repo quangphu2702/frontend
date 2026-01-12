@@ -7,7 +7,6 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Game from './pages/Game';
 import Profile from './pages/Profile';
-import Leaderboard from './pages/Leaderboard';
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -41,7 +40,6 @@ const AppRoutes = () => {
           </PrivateRoute>
         }
       />
-      <Route path="/leaderboard" element={<Leaderboard />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

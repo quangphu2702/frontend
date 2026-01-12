@@ -17,7 +17,7 @@
 }
 
 .game-card h1 {
-  color: #667eea;
+  color: #ff6b35;
   margin-bottom: 2rem;
   font-size: 2.5rem;
 }
@@ -27,7 +27,7 @@
   justify-content: space-around;
   margin-bottom: 2rem;
   padding: 1.5rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #4ecdc4;
   border-radius: 10px;
   color: white;
 }
@@ -68,9 +68,9 @@
 .number-button {
   width: 80px;
   height: 80px;
-  border: 3px solid #667eea;
+  border: 3px solid #ff6b35;
   background: white;
-  color: #667eea;
+  color: #ff6b35;
   border-radius: 50%;
   font-size: 2rem;
   font-weight: bold;
@@ -79,13 +79,13 @@
 }
 
 .number-button:hover:not(.disabled) {
-  background: #667eea;
+  background: #ff6b35;
   color: white;
   transform: scale(1.1);
 }
 
 .number-button.selected {
-  background: #667eea;
+  background: #ff6b35;
   color: white;
 }
 
@@ -147,7 +147,7 @@
 
 .buy-button {
   padding: 1rem 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #ff6b35;
   color: white;
   border: none;
   border-radius: 8px;
@@ -160,7 +160,80 @@
 
 .buy-button:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+  background: #ff8555;
+}
+
+.password-form {
+  margin-top: 1.5rem;
+  text-align: left;
+}
+
+.password-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.password-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.password-form input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.password-form input:focus {
+  outline: none;
+  border-color: #ff6b35;
+}
+
+.payment-message {
+  padding: 0.75rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.payment-message.success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.payment-message.error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.cancel-button {
+  padding: 1rem 2rem;
+  background: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.cancel-button:hover {
+  background: #5a6268;
 }
 
 .buy-button:disabled {

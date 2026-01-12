@@ -23,7 +23,6 @@ const Layout = ({ children }) => {
             {user ? (
               <>
                 <Link to="/game" className="nav-link">Chơi Game</Link>
-                <Link to="/leaderboard" className="nav-link">Bảng Xếp Hạng</Link>
                 <Link to="/profile" className="nav-link">Thông Tin</Link>
                 <span className="nav-user">Xin chào, {user.email}</span>
                 <button onClick={handleLogout} className="nav-button">
